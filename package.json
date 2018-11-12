@@ -1,0 +1,41 @@
+{
+  "name": "openfin-processes",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "description": "An exploration of OpenFin window processes",
+  "repository": "git@github.com:owennw/openfin-processes.git",
+  "author": "Nick Owen <nowen@scottlogic.co.uk>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "commit": "git-cz",
+    "clean": "rimraf lib/",
+    "prebuild": "yarn clean",
+    "build": "webpack --config ./build/webpack.config.js",
+    "lint": "tslint -p ./tsconfig.json",
+    "ci": "yarn lint"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/node": "^10.12.2",
+    "babel-loader": "^8.0.4",
+    "commitizen": "^3.0.4",
+    "cz-conventional-changelog": "2.1.0",
+    "rimraf": "^2.6.2",
+    "ts-loader": "^5.3.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.25.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
