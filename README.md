@@ -2,6 +2,16 @@
 
 An exploration of OpenFin window processes
 
+## Running
+
+Run
+
+```
+yarn serve
+```
+
+and navigate to `localhost:8000`.
+
 ## Contributing
 
 ### License
