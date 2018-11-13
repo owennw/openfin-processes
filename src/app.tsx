@@ -27,7 +27,7 @@ const App = ({ classes: { app } }: IAppProps) => (
   <Fragment>
     <AppBar position='static' color='default' className={app}>
       <Toolbar>
-        <Typography variant='title'>
+        <Typography component='h1' variant='h4'>
           Welcome to the OpenFin processes app!
         </Typography>
       </Toolbar>

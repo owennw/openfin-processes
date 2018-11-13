@@ -15,7 +15,7 @@ import {
 
 const { Component } = React
 
-interface ICounterProps {
+interface IOwnCounterProps {
   label: string
 }
 
@@ -43,22 +43,25 @@ const styles = {
   },
 }
 
-interface IStatefulCounterProps extends ICounterProps, IStyledCounterProps {
+interface IStatefulCounterProps extends IOwnCounterProps, IStyledCounterProps {
   count: number
   increment: () => void
   decrement: () => void
 }
 
-class Counter extends Component<IStatefulCounterProps, {}> {
+interface ICounterProps extends IStatefulCounterProps, IStyledCounterProps, IOwnCounterProps {
+}
+
+class Counter extends Component<ICounterProps> {
   public render() {
     const { count, label, classes: { card, title, counter } } = this.props
     return (
       <Card className={card}>
         <CardContent>
-          <Typography className={title}>
+          <Typography component='h2' className={title}>
             Counter {label}
           </Typography>
-          <Typography variant='headline' component='h2' className={counter}>
+          <Typography component='h3' variant='h5' className={counter}>
             {count}
           </Typography>
         </CardContent>
