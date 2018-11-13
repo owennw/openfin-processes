@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
-import { Counter } from './counter'
+import { CounterArray } from './counter-array'
 
 const { Fragment } = React
 
@@ -32,7 +32,7 @@ const App = ({ classes: { app } }: IAppProps) => (
         </Typography>
       </Toolbar>
     </AppBar>
-    <Counter />
+    <CounterArray />
   </Fragment>
 )
 

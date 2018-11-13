@@ -13,33 +13,53 @@ import {
   decrement as decrementAction,
 } from './ducks'
 
+const { Component } = React
+
+interface ICounterProps {
+  label: string
+}
+
+interface ICardStyle {
+  card: string
+  title: string
+  counter: string
+}
+
+interface IStyledCounterProps {
+  classes: ICardStyle
+}
+
 const styles = {
   card: {
     maxWidth: 275,
+    margin: 10,
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 14,
+  },
+  counter: {
+    marginLeft: '47%',
   },
 }
 
-const { Component } = React
-
-interface ICardStyle {
-  card: string,
-}
-
-interface IStatefulCounterProps {
+interface IStatefulCounterProps extends ICounterProps, IStyledCounterProps {
   count: number
   increment: () => void
   decrement: () => void
-  classes: ICardStyle
 }
 
 class Counter extends Component<IStatefulCounterProps, {}> {
   public render() {
-    const { count, classes: { card } } = this.props
+    const { count, label, classes: { card, title, counter } } = this.props
     return (
       <Card className={card}>
         <CardContent>
-          <Typography>
-            Count: {count}
+          <Typography className={title}>
+            Counter {label}
+          </Typography>
+          <Typography variant='headline' component='h2' className={counter}>
+            {count}
           </Typography>
         </CardContent>
         <CardActions>
