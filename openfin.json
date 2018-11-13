@@ -1,0 +1,16 @@
+{
+  "devtools_port": 9090,
+  "startup_app": {
+    "name": "OpenFin Processes",
+    "uuid": "OFP",
+    "defaultWidth": 1200,
+    "defaultHeight": 800,
+    "frame": true,
+    "showTaskbarIcon": true,
+    "url": "http://localhost:8000/index.html",
+    "autoShow" : true
+  },
+  "runtime": {
+    "version": "9.61.36.36"
+  }
+}
