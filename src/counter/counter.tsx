@@ -1,30 +1,52 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import { withStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 
 import {
   increment as incrementAction,
   decrement as decrementAction,
 } from './ducks'
 
-const { Fragment, Component } = React
+const styles = {
+  card: {
+    maxWidth: 275,
+  },
+}
+
+const { Component } = React
+
+interface ICardStyle {
+  card: string,
+}
 
 interface IStatefulCounterProps {
   count: number
   increment: () => void
   decrement: () => void
+  classes: ICardStyle
 }
 
 class Counter extends Component<IStatefulCounterProps, {}> {
   public render() {
-    const { count } = this.props
+    const { count, classes: { card } } = this.props
     return (
-      <Fragment>
-        Count: {count}
-        <Button onClick={this.increment}>Increment</Button>
-        <Button onClick={this.decrement}>Decrement</Button>
-      </Fragment>
+      <Card className={card}>
+        <CardContent>
+          <Typography>
+            Count: {count}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button onClick={this.increment}>Increment</Button>
+          <Button onClick={this.decrement}>Decrement</Button>
+        </CardActions>
+      </Card>
     )
   }
 
@@ -48,6 +70,6 @@ const mapDispatchToProps = ({
   decrement: decrementAction,
 })
 
-const connectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
+const ComposedCounter = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Counter))
 
-export { connectedCounter as Counter }
+export { ComposedCounter as Counter }
