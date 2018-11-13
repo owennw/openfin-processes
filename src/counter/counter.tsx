@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
+import OpenInNew from '@material-ui/icons/OpenInNew'
+import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
@@ -21,8 +23,9 @@ interface IOwnCounterProps {
 
 interface ICardStyle {
   card: string
-  title: string
+  header: string
   counter: string
+  icon: string
 }
 
 interface IStyledCounterProps {
@@ -34,12 +37,15 @@ const styles = {
     maxWidth: 275,
     margin: 10,
   },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   counter: {
     marginLeft: '47%',
+  },
+  icon: {
+    padding: 0,
   },
 }
 
@@ -54,20 +60,25 @@ interface ICounterProps extends IStatefulCounterProps, IStyledCounterProps, IOwn
 
 class Counter extends Component<ICounterProps> {
   public render() {
-    const { count, label, classes: { card, title, counter } } = this.props
+    const { count, label, classes: { card, counter, header, icon } } = this.props
     return (
       <Card className={card}>
         <CardContent>
-          <Typography component='h2' className={title}>
-            Counter {label}
-          </Typography>
+          <div className={header}>
+            <Typography component='h2'>
+              Counter {label}
+            </Typography>
+            <IconButton aria-label='tear-out' className={icon}>
+              <OpenInNew />
+            </IconButton>
+          </div>
           <Typography component='h3' variant='h5' className={counter}>
             {count}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={this.increment}>Increment</Button>
-          <Button onClick={this.decrement}>Decrement</Button>
+          <Button variant='outlined' color='secondary' onClick={this.increment}>Increment</Button>
+          <Button variant='outlined' color='secondary' onClick={this.decrement}>Decrement</Button>
         </CardActions>
       </Card>
     )
