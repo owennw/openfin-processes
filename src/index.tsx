@@ -8,6 +8,8 @@ import { reducer } from './reducer'
 
 import { App } from './app'
 
+import 'typeface-roboto'
+
 const store = createStore(reducer)
 
 ReactDOM.render(

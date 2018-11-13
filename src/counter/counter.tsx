@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import Button from '@material-ui/core/Button'
+
 import {
   increment as incrementAction,
   decrement as decrementAction,
@@ -20,8 +22,8 @@ class Counter extends Component<IStatefulCounterProps, {}> {
     return (
       <Fragment>
         Count: {count}
-        <button onClick={this.increment}>Increment</button>
-        <button onClick={this.decrement}>Decrement</button>
+        <Button onClick={this.increment}>Increment</Button>
+        <Button onClick={this.decrement}>Decrement</Button>
       </Fragment>
     )
   }
