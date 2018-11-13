@@ -5,6 +5,8 @@
     "uuid": "OFP",
     "defaultWidth": 1200,
     "defaultHeight": 800,
+    "minWidth": 330,
+    "minHeight": 300,
     "frame": true,
     "showTaskbarIcon": true,
     "url": "http://localhost:8000/index.html",

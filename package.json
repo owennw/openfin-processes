@@ -27,6 +27,7 @@
     "@babel/preset-typescript": "^7.1.0",
     "@types/node": "^10.12.2",
     "@types/react": "^16.7.3",
+    "@types/react-grid-layout": "^0.16.5",
     "babel-loader": "^8.0.4",
     "commitizen": "^3.0.4",
     "copy-webpack-plugin": "^4.6.0",
@@ -53,9 +54,11 @@
   "dependencies": {
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
+    "classnames": "^2.2.6",
     "openfin-launcher": "^1.4.8",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
+    "react-grid-layout": "^0.16.6",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
     "typeface-roboto": "^0.0.54"

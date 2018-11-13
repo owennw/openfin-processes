@@ -12,6 +12,8 @@ import { reducer } from './reducer'
 import { App } from './app'
 
 import 'typeface-roboto'
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
 
 const store = createStore(reducer)
 

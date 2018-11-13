@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -15,38 +16,13 @@ import {
   decrement as decrementAction,
 } from './ducks'
 
+import { styles, IStyledCounterProps } from './styles'
+
 const { Component } = React
 
 interface IOwnCounterProps {
   label: string
-}
-
-interface ICardStyle {
-  card: string
-  header: string
-  counter: string
-  icon: string
-}
-
-interface IStyledCounterProps {
-  classes: ICardStyle
-}
-
-const styles = {
-  card: {
-    maxWidth: 275,
-    margin: 10,
-  },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  counter: {
-    marginLeft: '47%',
-  },
-  icon: {
-    padding: 0,
-  },
+  dragCancel: string
 }
 
 interface IStatefulCounterProps extends IOwnCounterProps, IStyledCounterProps {
@@ -58,17 +34,20 @@ interface IStatefulCounterProps extends IOwnCounterProps, IStyledCounterProps {
 interface ICounterProps extends IStatefulCounterProps, IStyledCounterProps, IOwnCounterProps {
 }
 
+const CounterButton = ({ children, onClick, classes }) =>
+  <Button variant='outlined' color='secondary' onClick={onClick} className={classes}>{children}</Button>
+
 class Counter extends Component<ICounterProps> {
   public render() {
-    const { count, label, classes: { card, counter, header, icon } } = this.props
+    const { count, label, classes: { counter, header, icon, button, actions } } = this.props
     return (
-      <Card className={card}>
+      <Card>
         <CardContent>
           <div className={header}>
             <Typography component='h2'>
               Counter {label}
             </Typography>
-            <IconButton aria-label='tear-out' className={icon}>
+            <IconButton aria-label='tear-out' className={this.withCancel(icon)}>
               <OpenInNew />
             </IconButton>
           </div>
@@ -77,12 +56,19 @@ class Counter extends Component<ICounterProps> {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant='outlined' color='secondary' onClick={this.increment}>Increment</Button>
-          <Button variant='outlined' color='secondary' onClick={this.decrement}>Decrement</Button>
+          <div className={actions}>
+            <CounterButton onClick={this.increment} classes={this.withCancel(button)} >Increment</CounterButton>
+            <CounterButton onClick={this.decrement} classes={this.withCancel(button)} >Decrement</CounterButton>
+          </div>
         </CardActions>
       </Card>
     )
   }
+
+  private withCancel = (classes?: string) => {
+    const { dragCancel } = this.props
+    return classNames(classes, dragCancel)
+}
 
   private increment = () => {
     const { increment } = this.props
