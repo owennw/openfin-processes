@@ -1,3 +1,3 @@
-import { reducer } from './counter'
+import { reducer } from './counter/ducks'
 
 export { reducer }
